@@ -1,0 +1,382 @@
+Query         2M4J_1|Chains A, B, C, D, E, F, G, H, I|Amyloid beta A4 protein|Homo sapiens (9606)
+Match_columns 40
+No_of_seqs    20 out of 143
+Neff          1.61854
+Searched_HMMs 80799
+Date          Thu Jun 22 11:47:06 2023
+Command       /home/gideonm/.conda/envs/alphafold-2.3/bin/hhsearch -i /scratch/local/jobs/6035998/tmpqzhs_09m/query.a3m -o /scratch/local/jobs/6035998/tmpqzhs_09m/output.hhr -maxseq 1000000 -d /scratch/midway3/gideonm/alphafold-database//pdb70/pdb70 
+
+ No Hit                             Prob E-value P-value  Score    SS Cols Query HMM  Template HMM
+  1 5BUO_A Amyloid beta A4 protein  98.4 8.2E-10   1E-14   77.6   0.0   35    5-39    308-342 (342)
+  2 3IFN_P 12A11 FAB antibody heav  98.3 1.8E-09 2.3E-14   54.5   0.0   40    1-40      1-40  (40)
+  3 6SHS_D Amyloid-beta precursor   98.3 1.8E-09 2.3E-14   54.5   0.0   40    1-40      1-40  (40)
+  4 2LP1_A Amyloid beta A4 protein  96.6 5.1E-05 6.3E-10   48.8   0.0   39    2-40      3-41  (122)
+  5 2LZ4_A Amyloid beta A4 protein  93.6   0.016   2E-07   29.0   0.0   15   26-40      2-16  (31)
+  6 6IYC_E Nicastrin, Presenilin-1  93.3   0.021 2.6E-07   36.3   0.0   22   19-40      4-25  (104)
+  7 4F37_A Colicin-E7 immunity pro  89.8    0.14 1.8E-06   32.8   0.0   12    3-14      3-14  (124)
+  8 2RN0_A Integrin beta-3; transm  86.0    0.41 5.1E-06   23.3   0.0   13   27-39      8-20  (43)
+  9 2LOH_B P3(42); NEUROPEPTIDE; N  82.7    0.77 9.5E-06   21.8   0.0   17   23-39     11-27  (43)
+ 10 2L34_A TYRO protein tyrosine k  80.5     1.1 1.3E-05   21.1   0.0   12   27-38      5-16  (33)
+ 11 4WOL_A DAP12; alpha-helix tran  80.5     1.1 1.3E-05   21.1   0.0   12   27-38      5-16  (33)
+ 12 2KNC_B Integrin alpha-IIb, Int  74.9     2.1 2.6E-05   23.5   0.0   12   28-39     10-21  (79)
+ 13 2N2A_A Receptor tyrosine-prote  70.1     3.3 4.1E-05   22.1   0.0    6   28-33      8-13  (58)
+ 14 1IFP_A MAJOR COAT PROTEIN ASSE  70.0     3.3 4.1E-05   23.2   0.0   18   22-39     17-34  (44)
+ 15 2K9Y_B Ephrin type-A receptor   68.7     3.7 4.6E-05   18.4   0.0    8   29-36     13-20  (41)
+ 16 2QTS_D Acid-sensing ion channe  32.8      37 0.00046   21.4   0.0   17   22-38    407-423 (438)
+ 17 2QTS_E Acid-sensing ion channe  32.8      37 0.00046   21.4   0.0   17   22-38    407-423 (438)
+ 18 2HJE_A Autoinducer 2 sensor ki  30.4      43 0.00054   22.5   0.0   11   29-39    130-140 (221)
+ 19 4FZ0_C Acid-sensing ion channe  29.5      46 0.00057   21.3   0.0   17   22-38    419-435 (450)
+ 20 6BQN_C SCNN1A, SCNN1B, SCNN1G,  27.4      53 0.00066   23.3   0.0   15   22-36    481-495 (503)
+ 21 6VTK_A Acid-sensing ion channe  25.7      60 0.00074   22.0   0.0   18   21-38    431-448 (527)
+ 22 6VTL_B Acid-sensing ion channe  25.7      60 0.00074   22.0   0.0   18   21-38    431-448 (527)
+ 23 5ZQY_A Tudor-interacting repai  23.7      69 0.00085   20.6   0.0   10   28-37     10-19  (349)
+ 24 1ZHH_B Autoinducer 2-binding p  22.3      76 0.00095   21.6   0.0   12   28-39    143-154 (242)
+ 25 6IUX_A [Protein ADP-ribosylarg  20.3      90  0.0011   20.7   0.0   16   22-37     21-36  (379)
+
+No 1
+>5BUO_A Amyloid beta A4 protein, Receptor; receptor, dimer, metal transport; HET: IDS, SGN, GOL; 2.31A {Homo sapiens}
+Probab=98.35  E-value=8.2e-10  Score=77.61  Aligned_cols=35  Identities=100%  Similarity=1.522  Sum_probs=0.0  Template_Neff=5.000
+
+Q 2M4J_1|Chains     5 RHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGV   39 (40)
+Q Consensus         5 r~~ag~ev~~qklvffaeDvgsNKGAIIGLMVGGV   39 (40)
+                      +++.++++++|++++++.++++|+++||||+|+||
+T Consensus       308 ~~~~~~~~~~q~l~~~~~~~~~n~~a~IGL~v~gV  342 (342)
+T 5BUO_A          308 RHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGV  342 (342)
+T ss_dssp             -----------------------------------
+T ss_pred             HhccccccccccchhhHhhccccccceeeeeeeeC
+Confidence            45567788899999999999999999999999997
+
+
+No 2
+>3IFN_P 12A11 FAB antibody heavy chain; antibody, amyloid beta peptide, IMMUNE; 1.5A {Mus musculus}
+Probab=98.27  E-value=1.8e-09  Score=54.46  Aligned_cols=40  Identities=100%  Similarity=1.507  Sum_probs=36.2  Template_Neff=6.600
+
+Q 2M4J_1|Chains     1 DAEFRHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGVV   40 (40)
+Q Consensus         1 d~eer~~ag~ev~~qklvffaeDvgsNKGAIIGLMVGGVV   40 (40)
+                      |++++++.++++++|++++.+.+.++|++++|||+|+||+
+T Consensus         1 ~~~~~~~~~~~~~~~~l~~~~~~~~~~~~~~igL~v~gVa   40 (40)
+T 3IFN_P            1 DAEFRHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGVV   40 (40)
+T ss_pred             ChhccccccccccccceeechhhccCCccceEEEeeEecC
+Confidence            5677778889999999998999999999999999999986
+
+
+No 3
+>6SHS_D Amyloid-beta precursor protein; fibril, beta amyloid, Cryo-EM, PROTEIN; 4.4A {Homo sapiens}
+Probab=98.27  E-value=1.8e-09  Score=54.46  Aligned_cols=40  Identities=100%  Similarity=1.507  Sum_probs=36.2  Template_Neff=6.600
+
+Q 2M4J_1|Chains     1 DAEFRHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGVV   40 (40)
+Q Consensus         1 d~eer~~ag~ev~~qklvffaeDvgsNKGAIIGLMVGGVV   40 (40)
+                      |++++++.++++++|++++.+.+.++|++++|||+|+||+
+T Consensus         1 ~~~~~~~~~~~~~~~~l~~~~~~~~~~~~~~igL~v~gVa   40 (40)
+T 6SHS_D            1 DAEFRHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGVV   40 (40)
+T ss_dssp             CCEEEEEEEEEECSEEEEECCCCCSCCSCCCCEESSCCCC
+T ss_pred             ChhccccccccccccceeechhhccCCccceEEEeeEecC
+Confidence            5677778889999999998999999999999999999986
+
+
+No 4
+>2LP1_A Amyloid beta A4 protein; AMYLOID PRECURSOR PROTEIN C-TERMINAL FRAGMENT; NMR {Homo sapiens}
+Probab=96.58  E-value=5.1e-05  Score=48.76  Aligned_cols=39  Identities=100%  Similarity=1.506  Sum_probs=32.9  Template_Neff=3.700
+
+Q 2M4J_1|Chains     2 AEFRHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGVV   40 (40)
+Q Consensus         2 ~eer~~ag~ev~~qklvffaeDvgsNKGAIIGLMVGGVV   40 (40)
+                      ++++++.++++++|++++.+.+.++|++++|||+|+||+
+T Consensus         3 ~~~~~~~~~~~~~~~l~~~~~~~~~~~~a~igl~v~~va   41 (122)
+T 2LP1_A            3 AEFRHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGVV   41 (122)
+T ss_pred             CCCCCcccCCCCccccccchhhcccchhHHHHHHHHHHH
+Confidence            345666778888888888888999999999999999985
+
+
+No 5
+>2LZ4_A Amyloid beta A4 protein; helix, dimer, transmembrane, MEMBRANE PROTEIN; NMR {Homo sapiens}
+Probab=93.63  E-value=0.016  Score=29.01  Aligned_cols=15  Identities=87%  Similarity=1.261  Sum_probs=11.7  Template_Neff=5.300
+
+Q 2M4J_1|Chains    26 SNKGAIIGLMVGGVV   40 (40)
+Q Consensus        26 sNKGAIIGLMVGGVV   40 (40)
+                      +|++++|||+|+|++
+T Consensus         2 ~~~~~~igl~v~~va   16 (31)
+T 2LZ4_A            2 MAKGAIIGLMVGGVV   16 (31)
+T ss_dssp             --CHHHHHHHHHHHH
+T ss_pred             CchhHHHHHHHHHHH
+Confidence            578999999999875
+
+
+No 6
+>6IYC_E Nicastrin, Presenilin-1 (E.C.3.4.23.-), Gamma-secretase subunit; Complex, MEMBRANE PROTEIN; HET: NAG, PC1, CLR, BMA;{Homo sapiens}
+Probab=93.33  E-value=0.021  Score=36.29  Aligned_cols=22  Identities=95%  Similarity=1.449  Sum_probs=18.6  Template_Neff=3.500
+
+Q 2M4J_1|Chains    19 FFAEDVGSNKGAIIGLMVGGVV   40 (40)
+Q Consensus        19 ffaeDvgsNKGAIIGLMVGGVV   40 (40)
+                      +.+.+.++|++++|||+|+||+
+T Consensus         4 ~~s~~~~~~~~~~igl~v~~va   25 (104)
+T 6IYC_E            4 FFAEDCGSNKGAIIGLMVGGVV   25 (104)
+T ss_pred             CcccccCCChHHHHHHHHHHHH
+Confidence            3456789999999999999985
+
+
+No 7
+>4F37_A Colicin-E7 immunity protein, Im7 immunity; amyloid-beta, Alzheimer's disease, IMMUNE SYSTEM; 2.57A {Escherichia coli}
+Probab=89.78  E-value=0.14  Score=32.76  Aligned_cols=12  Identities=100%  Similarity=1.708  Sum_probs=5.9  Template_Neff=4.600
+
+Q 2M4J_1|Chains     3 EFRHDSGYEVHH   14 (40)
+Q Consensus         3 eer~~ag~ev~~   14 (40)
+                      +.++..+++.+|
+T Consensus         3 ~~~~~~~~~~~~   14 (124)
+T 4F37_A            3 EFRHDSGYEVHH   14 (124)
+T ss_dssp             CCCCCCCSSSSS
+T ss_pred             ccccccccchhh
+Confidence            344455555553
+
+
+No 8
+>2RN0_A Integrin beta-3; transmembrane helix, Alternative splicing, Cell; NMR {Homo sapiens}
+Probab=86.00  E-value=0.41  Score=23.25  Aligned_cols=13  Identities=8%  Similarity=0.222  Sum_probs=6.3  Template_Neff=8.000
+
+Q 2M4J_1|Chains    27 NKGAIIGLMVGGV   39 (40)
+Q Consensus        27 NKGAIIGLMVGGV   39 (40)
+                      |.+.++|-.++|+
+T Consensus         8 ~~~~i~ggvvggi   20 (43)
+T 2RN0_A            8 DILVVLLSVMGAI   20 (43)
+T ss_dssp             CHHHHHHHHHHHH
+T ss_pred             cHHHHHHHHHHHH
+Confidence            4455555544444
+
+
+No 9
+>2LOH_B P3(42); NEUROPEPTIDE; NMR {Homo sapiens}
+Probab=82.67  E-value=0.77  Score=21.84  Aligned_cols=17  Identities=100%  Similarity=1.484  Sum_probs=10.0  Template_Neff=8.500
+
+Q 2M4J_1|Chains    23 DVGSNKGAIIGLMVGGV   39 (40)
+Q Consensus        23 DvgsNKGAIIGLMVGGV   39 (40)
+                      ..+.+.+.+++.+++++
+T Consensus        11 ~~~~~~~~i~g~~ig~~   27 (43)
+T 2LOH_B           11 DVGSNKGAIIGLMVGGV   27 (43)
+T ss_dssp             HTCCSHHHHHHHHHHHH
+T ss_pred             CCCCcHHHHHHHHHHHH
+Confidence            44455566766666554
+
+
+No 10
+>2L34_A TYRO protein tyrosine kinase-binding protein; Immunoreceptor, transmembrane assembly, DAP12, PROTEIN; NMR {Homo sapiens}
+Probab=80.49  E-value=1.1  Score=21.11  Aligned_cols=12  Identities=33%  Similarity=0.836  Sum_probs=6.1  Template_Neff=7.500
+
+Q 2M4J_1|Chains    27 NKGAIIGLMVGG   38 (40)
+Q Consensus        27 NKGAIIGLMVGG   38 (40)
+                      +.+++.|..+++
+T Consensus         5 s~g~i~Gi~ig~   16 (33)
+T 2L34_A            5 SPGVLAGIVVGD   16 (33)
+T ss_dssp             CTHHHHHHHHHH
+T ss_pred             CHhHHHHHHHHH
+Confidence            445555555444
+
+
+No 11
+>4WOL_A DAP12; alpha-helix transmembrane signalling, SIGNALING PROTEIN; HET: OLC; 1.77A {Homo sapiens}
+Probab=80.49  E-value=1.1  Score=21.11  Aligned_cols=12  Identities=33%  Similarity=0.836  Sum_probs=6.1  Template_Neff=7.500
+
+Q 2M4J_1|Chains    27 NKGAIIGLMVGG   38 (40)
+Q Consensus        27 NKGAIIGLMVGG   38 (40)
+                      +.+++.|..+++
+T Consensus         5 s~g~i~Gi~ig~   16 (33)
+T 4WOL_A            5 SPGVLAGIVVGD   16 (33)
+T ss_dssp             CHHHHHHHHHHH
+T ss_pred             CHhHHHHHHHHH
+Confidence            445555555444
+
+
+No 12
+>2KNC_B Integrin alpha-IIb, Integrin beta-3; integrin, transmembrane signaling, protein structure; NMR {Homo sapiens}
+Probab=74.87  E-value=2.1  Score=23.47  Aligned_cols=12  Identities=8%  Similarity=0.180  Sum_probs=0.8  Template_Neff=7.700
+
+Q 2M4J_1|Chains    28 KGAIIGLMVGGV   39 (40)
+Q Consensus        28 KGAIIGLMVGGV   39 (40)
+                      .+.++|..++||
+T Consensus        10 ~~~i~g~vvggi   21 (79)
+T 2KNC_B           10 ILVVLLSVMGAI   21 (79)
+T ss_dssp             ----------SH
+T ss_pred             hHHHHHHHHHHH
+Confidence            344444444443
+
+
+No 13
+>2N2A_A Receptor tyrosine-protein kinase erbB-2; HER2, ErbB2, Tyrosine kinase, Activation; NMR {Homo sapiens}
+Probab=70.05  E-value=3.3  Score=22.06  Aligned_cols=6  Identities=33%  Similarity=0.351  Sum_probs=2.3  Template_Neff=7.000
+
+Q 2M4J_1|Chains    28 KGAIIG   33 (40)
+Q Consensus        28 KGAIIG   33 (40)
+                      .+++++
+T Consensus         8 ~~~I~~   13 (58)
+T 2N2A_A            8 LTSIIS   13 (58)
+T ss_dssp             HHHHHH
+T ss_pred             hHHHHH
+Confidence            334333
+
+
+No 14
+>1IFP_A MAJOR COAT PROTEIN ASSEMBLY; VIRUS COAT PROTEIN, Helical virus; 3.1A {Pseudomonas phage Pf3} SCOP: h.1.4.1
+Probab=69.98  E-value=3.3  Score=23.20  Aligned_cols=18  Identities=33%  Similarity=0.309  Sum_probs=12.4  Template_Neff=3.500
+
+Q 2M4J_1|Chains    22 EDVGSNKGAIIGLMVGGV   39 (40)
+Q Consensus        22 eDvgsNKGAIIGLMVGGV   39 (40)
+                      .+.+...+++|+++++.+
+T Consensus        17 t~I~aIG~AvL~vav~~~   34 (44)
+T 1IFP_A           17 ADITTIGGAIIVLAAVVL   34 (44)
+T ss_dssp             HHHHHHHHHHHHHHHHHH
+T ss_pred             ccHHHHHHHHHHHHHHHH
+Confidence            346667788888886654
+
+
+No 15
+>2K9Y_B Ephrin type-A receptor 2 (E.C.2.7.10.1); receptor tyrosine kinase, membrane protein; NMR {Homo sapiens}
+Probab=68.66  E-value=3.7  Score=18.43  Aligned_cols=8  Identities=38%  Similarity=0.376  Sum_probs=3.2  Template_Neff=9.500
+
+Q 2M4J_1|Chains    29 GAIIGLMV   36 (40)
+Q Consensus        29 GAIIGLMV   36 (40)
+                      +..++..+
+T Consensus        13 ~~~ig~~~   20 (41)
+T 2K9Y_B           13 LAVIGGVA   20 (41)
+T ss_dssp             THHHHHHH
+T ss_pred             HHHHHHHH
+Confidence            44444433
+
+
+No 16
+>2QTS_D Acid-sensing ion channel; acid-sensing, ion channel, trimer, MEMBRANE; HET: NAG, MAL; 1.9A {Gallus gallus}
+Probab=32.85  E-value=37  Score=21.41  Aligned_cols=17  Identities=29%  Similarity=0.497  Sum_probs=9.6  Template_Neff=11.100
+
+Q 2M4J_1|Chains    22 EDVGSNKGAIIGLMVGG   38 (40)
+Q Consensus        22 eDvgsNKGAIIGLMVGG   38 (40)
+                      ..++.+-|..+|+.+..
+T Consensus       407 ~~iGG~~gL~lG~S~ls  423 (438)
+T 2QTS_D          407 GDIGGQMGLFIGASILT  423 (438)
+T ss_dssp             HHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHH
+Confidence            45556666666655443
+
+
+No 17
+>2QTS_E Acid-sensing ion channel; acid-sensing, ion channel, trimer, MEMBRANE; HET: MAL, NAG; 1.9A {Gallus gallus}
+Probab=32.83  E-value=37  Score=21.40  Aligned_cols=17  Identities=29%  Similarity=0.497  Sum_probs=9.6  Template_Neff=11.100
+
+Q 2M4J_1|Chains    22 EDVGSNKGAIIGLMVGG   38 (40)
+Q Consensus        22 eDvgsNKGAIIGLMVGG   38 (40)
+                      ..++.+-|..+|+.+..
+T Consensus       407 ~~iGG~~gL~lG~S~ls  423 (438)
+T 2QTS_E          407 GDIGGQMGLFIGASILT  423 (438)
+T ss_dssp             HHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHH
+Confidence            45556666666655443
+
+
+No 18
+>2HJE_A Autoinducer 2 sensor kinase/phosphatase luxQ; PER/ARNT/SIMPLE-MINDED (PAS) FOLD, AUTOINDUCER-2 (AI-2); 1.7A {Vibrio harveyi} SCOP: d.110.6.3
+Probab=30.41  E-value=43  Score=22.46  Aligned_cols=11  Identities=27%  Similarity=0.730  Sum_probs=6.5  Template_Neff=6.600
+
+Q 2M4J_1|Chains    29 GAIIGLMVGGV   39 (40)
+Q Consensus        29 GAIIGLMVGGV   39 (40)
+                      |-++|.+++|+
+T Consensus       130 G~v~G~L~gGv  140 (221)
+T 2HJE_A          130 GEVLGFSFNAV  140 (221)
+T ss_dssp             TEEEEEEEEEE
+T ss_pred             CcEEEEEEEEE
+Confidence            35566666665
+
+
+No 19
+>4FZ0_C Acid-sensing ion channel 1, Pi-theraphotoxin-Pc1a; inhibitor cystine knot, TRANSPORT PROTEIN; HET: GOL, NAG; 2.8A {Gallus gallus}
+Probab=29.54  E-value=46  Score=21.27  Aligned_cols=17  Identities=29%  Similarity=0.497  Sum_probs=9.3  Template_Neff=10.900
+
+Q 2M4J_1|Chains    22 EDVGSNKGAIIGLMVGG   38 (40)
+Q Consensus        22 eDvgsNKGAIIGLMVGG   38 (40)
+                      ...+..-|..+|+.+..
+T Consensus       419 ~~iGG~~gL~lG~S~ls  435 (450)
+T 4FZ0_C          419 GDIGGQMGLFIGASILT  435 (450)
+T ss_dssp             HHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHH
+Confidence            44555566666655443
+
+
+No 20
+>6BQN_C SCNN1A, SCNN1B, SCNN1G, 7B1 fab; sodium channel, MEMBRANE PROTEIN;{Mus musculus}
+Probab=27.39  E-value=53  Score=23.31  Aligned_cols=15  Identities=0%  Similarity=0.000  Sum_probs=7.8  Template_Neff=8.500
+
+Q 2M4J_1|Chains    22 EDVGSNKGAIIGLMV   36 (40)
+Q Consensus        22 eDvgsNKGAIIGLMV   36 (40)
+                      .++|.+-|.++|..+
+T Consensus       481 SdiGG~~GL~~g~~~  495 (503)
+T 6BQN_C          481 XXXXXXXXXXXXXXX  495 (503)
+T ss_dssp             HHHHHHHHHHHHSHH
+T ss_pred             CCCCCCCCCCCCCCC
+Confidence            445555555555443
+
+
+No 21
+>6VTK_A Acid-sensing ion channel 1; ion channel, ligand-gated ion channel; HET: NAG; 2.82A {Gallus gallus}
+Probab=25.69  E-value=60  Score=22.03  Aligned_cols=18  Identities=28%  Similarity=0.447  Sum_probs=10.0  Template_Neff=10.000
+
+Q 2M4J_1|Chains    21 AEDVGSNKGAIIGLMVGG   38 (40)
+Q Consensus        21 aeDvgsNKGAIIGLMVGG   38 (40)
+                      ..+++..-|..+|+.+..
+T Consensus       431 l~~iGG~lGL~lG~S~ls  448 (527)
+T 6VTK_A          431 LGDIGGQMGLFIGASILT  448 (527)
+T ss_dssp             HHHHHHHHHHHTCCCTTH
+T ss_pred             HHHhhhhHHHHhhhhHHH
+Confidence            345556666666655443
+
+
+No 22
+>6VTL_B Acid-sensing ion channel 1; ligand-gated ion channel, acid-sensing ion; HET: NAG; 3.65A {Gallus gallus}
+Probab=25.69  E-value=60  Score=22.03  Aligned_cols=18  Identities=28%  Similarity=0.447  Sum_probs=10.0  Template_Neff=10.000
+
+Q 2M4J_1|Chains    21 AEDVGSNKGAIIGLMVGG   38 (40)
+Q Consensus        21 aeDvgsNKGAIIGLMVGG   38 (40)
+                      ..+++..-|..+|+.+..
+T Consensus       431 l~~iGG~lGL~lG~S~ls  448 (527)
+T 6VTL_B          431 LGDIGGQMGLFIGASILT  448 (527)
+T ss_dssp             HTTTHHHHHHHTCCCHHH
+T ss_pred             HHHhhhhHHHHhhhhHHH
+Confidence            345556666666655443
+
+
+No 23
+>5ZQY_A Tudor-interacting repair regulator protein, TP53-binding; poly(ADP-ribose) glycohydrolase, LYASE, HYDROLASE; HET: AR6; 1.577A {Homo sapiens}
+Probab=23.73  E-value=69  Score=20.55  Aligned_cols=10  Identities=30%  Similarity=0.946  Sum_probs=6.2  Template_Neff=9.900
+
+Q 2M4J_1|Chains    28 KGAIIGLMVG   37 (40)
+Q Consensus        28 KGAIIGLMVG   37 (40)
+                      +++++|.++|
+T Consensus        10 ~gallG~aiG   19 (349)
+T 5ZQY_A           10 RGCLAGALLG   19 (349)
+T ss_dssp             HHHHHHHHHH
+T ss_pred             HHHHHHHHHH
+Confidence            4666776654
+
+
+No 24
+>1ZHH_B Autoinducer 2-binding periplasmic protein luxP; PERIPLASMIC BINDING PROTEIN, PER/ARNT/SIMPLE-MINDED (PAS); HET: NHE; 1.94A {Vibrio harveyi} SCOP: d.110.6.3
+Probab=22.29  E-value=76  Score=21.56  Aligned_cols=12  Identities=25%  Similarity=0.673  Sum_probs=6.9  Template_Neff=6.700
+
+Q 2M4J_1|Chains    28 KGAIIGLMVGGV   39 (40)
+Q Consensus        28 KGAIIGLMVGGV   39 (40)
+                      .|=++|.+.+|+
+T Consensus       143 ~Gev~G~LygGv  154 (242)
+T 1ZHH_B          143 TGEVLGFSFNAV  154 (242)
+T ss_dssp             TCBEEEEEEEEE
+T ss_pred             CCceEEEEEEEE
+Confidence            345566666665
+
+
+No 25
+>6IUX_A [Protein ADP-ribosylarginine] hydrolase (E.C.3.2.2.19); ADPR, protein, HYDROLASE; HET: AR6; 1.195A {Homo sapiens}
+Probab=20.27  E-value=90  Score=20.69  Aligned_cols=16  Identities=13%  Similarity=0.061  Sum_probs=9.1  Template_Neff=9.400
+
+Q 2M4J_1|Chains    22 EDVGSNKGAIIGLMVG   37 (40)
+Q Consensus        22 eDvgsNKGAIIGLMVG   37 (40)
+                      .....=+++++|+++|
+T Consensus        21 ~~~~k~~g~llG~aiG   36 (379)
+T 6IUX_A           21 PGSEKYVAAMVLSAAG   36 (379)
+T ss_dssp             -CHHHHHHHHHHHHHH
+T ss_pred             CChHHHHHHHHHHHHH
+Confidence            3444445777777754
+
+

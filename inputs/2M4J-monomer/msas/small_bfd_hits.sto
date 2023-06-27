@@ -1,0 +1,20 @@
+# STOCKHOLM 1.0
+#=GF ID 2M4J_1|Chains-i1
+#=GF DE A, B, C, D, E, F, G, H, I|Amyloid beta A4 protein|Homo sapiens (9606)
+#=GF AU jackhmmer (HMMER 3.3.2)
+
+#=GS 2M4J_1|Chains            DE A, B, C, D, E, F, G, H, I|Amyloid beta A4 protein|Homo sapiens (9606)
+#=GS W5L6V9_ASTMX/775-814     DE [subseq from] W5L6V9_ASTMX
+#=GS A0A146MSN6_FUNHE/433-472 DE [subseq from] A0A146MSN6_FUNHE
+#=GS A0A0P7TAE2_9TELE/15-53   DE [subseq from] A0A0P7TAE2_9TELE
+
+2M4J_1|Chains                    DAEFRHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGVV
+W5L6V9_ASTMX/775-814             EAEERHSAGYEVHHQKLVFFAEDVSSNKGAIIGLMVGGVV
+#=GR W5L6V9_ASTMX/775-814     PP 5899**********************************97
+A0A146MSN6_FUNHE/433-472         DTEERQSAGYEVYHQKLVFFTEDVGSNKGAIIGLMVGGVV
+#=GR A0A146MSN6_FUNHE/433-472 PP 67899*********************************97
+A0A0P7TAE2_9TELE/15-53           -TEERQSAAFEVHHQKLVFFAEDMGSNKGAVIGLMVGGVV
+#=GR A0A0P7TAE2_9TELE/15-53   PP .5779999******************************97
+#=GC PP_cons                     67889*********************************97
+#=GC RF                          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//
