@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import subprocess
 import tempfile
 import re
@@ -46,7 +48,7 @@ def parse_with_stride(infile: str, outfile: str):
     tfilename = tfile.name
 
     # pipe output to tmpfile, wait for it to complete
-    subprocess.check_call(
+    subprocess.call(
         [STRIDE_EXE, infile], stdout=tfile, stderr=subprocess.PIPE
     )
 
