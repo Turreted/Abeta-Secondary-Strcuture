@@ -72,5 +72,5 @@ if __name__ == "__main__":
     # iterate through all structure files and output them
     for fname in [f for f in os.listdir(args.input) if (".ent" in f or ".pdb" in f)]:
         infile = os.path.join(args.input, fname)
-        outfile = os.path.join(args.output, fname.replace(".ent", ".csv").replace("pdb", ".csv"))
+        outfile = os.path.join(args.output, fname.replace(".ent", ".csv").replace(".pdb", ".csv"))
         parse_with_stride(infile, outfile)
