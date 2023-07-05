@@ -14,10 +14,10 @@ def plot_muiltiple(template_dict: dict):
     multiplier = 3
 
     fig, ax = plt.subplots(layout='constrained')
-    plt.xticks(np.arange(1, ABETA_LONG_RESIDUE_COUNT+1, dtype=int), ABETA_LONG_SEQUENCE, rotation=-60)
+    # plt.xticks(np.arange(1, ABETA_LONG_RESIDUE_COUNT+1, dtype=int), ABETA_LONG_SEQUENCE, rotation=-60)
 
     # add line at 50%
-    plt.axhline(y=0.5, color='r', linestyle='-')
+    # plt.axhline(y=0.5, color='r', linestyle='-')
 
     for attribute, measurement in template_dict.items():
         offset = width * multiplier
@@ -26,7 +26,7 @@ def plot_muiltiple(template_dict: dict):
 
     ax.set_ylabel("Frequency of Secondary Structure")
     ax.set_xlabel("Residue")
-    ax.set_title("Frequency of Secondary Structure per Residue of ABeta-Monomer")
+    ax.set_title("Frequency of Secondary Structure per Residue")
     ax.legend(loc='upper right')
 
     plt.show()

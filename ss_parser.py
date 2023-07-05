@@ -87,9 +87,11 @@ def run_analysis(
     plot_freq=False,
     csv=False,
 ):
-    if False:
-        print("Generating scoring table...")
+    if not plot_freq:
         Path(output_dir).mkdir(parents=True, exist_ok=True)
+
+    if csv:
+        print("Generating scoring table...")
 
         if is_alphafold:
             generate_score_table(input_dir, output_dir)
@@ -101,7 +103,9 @@ def run_analysis(
 
     print("Generating monomer secondary strcuture charts...")
     # input directory is the result of an alphafold run so contains .pkl metadata files
+
     if is_alphafold:
+        print("Extra dumb")
         for pdb in get_run_pdb(input_dir, multimer=multimer, relaxed=relaxed):
             fullpath = os.path.join(input_dir, pdb)
             df = parse_with_stride(fullpath)
@@ -129,9 +133,9 @@ def run_analysis(
     # input directory is not the result of an alphafold run and so does not
     # contain .pkl metadata files
     else:
-        for pdb in get_all_pdb(input_dir):
+        for pdb in get_all_csv(input_dir):
             fullpath = os.path.join(input_dir, pdb)
-            df = parse_with_stride(fullpath)
+            df = pd.read_csv(fullpath)
 
             if not plot_freq:
                 for chain_iter, chain_code in enumerate(set(df["Chain"])):
@@ -143,8 +147,9 @@ def run_analysis(
 
                     print(f"Output {outfile}")
             else:
+                print("Plotting structure_freq")
                 plot_muiltiple(structure_freq)
-
+                break
 
 if __name__ == "__main__":
     run_analysis(

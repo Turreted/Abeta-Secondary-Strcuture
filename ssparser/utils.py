@@ -46,6 +46,10 @@ def get_run_pdb(data_dir: str, multimer=False, relaxed=True) -> list:
 def get_all_pdb(data_dir: str) -> list:
     return [f for f in os.listdir(data_dir) if f.endswith(".pdb")]
 
+# get all pdb files in a data directory
+def get_all_csv(data_dir: str) -> list:
+    return [f for f in os.listdir(data_dir) if f.endswith(".csv")]
+
 def t_or_f(arg):
     ua = str(arg).upper()
     if "TRUE".startswith(ua):
