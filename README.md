@@ -112,5 +112,5 @@ ABETA_SHORT_STRING = "".join(ABETA_SHORT_SEQUENCE)
 ABETA_SHORT_RESIDUE_COUNT = len(ABETA_SHORT_SEQUENCE)
 ```
 ```bash
-./ss_parser.py -i datasets/M1_beus -o output.png --alphafold false --plot_freq true
+./ss_parser.py -i datasets/M1_beus -o null --alphafold false --plot_freq true --output_csv false
 ```

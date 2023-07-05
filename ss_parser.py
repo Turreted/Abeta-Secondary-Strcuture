@@ -62,6 +62,7 @@ parser.add_argument(
     "--output_csv",
     "-c",
     default=True,
+    type=t_or_f,
     help="Specifies whether or not to generate a scoring table",
 )
 args = parser.parse_args()
@@ -84,9 +85,9 @@ def run_analysis(
     multimer=True,
     relaxed=True,
     plot_freq=False,
-    csv=True,
+    csv=False,
 ):
-    if csv:
+    if False:
         print("Generating scoring table...")
         Path(output_dir).mkdir(parents=True, exist_ok=True)
 
@@ -142,7 +143,7 @@ def run_analysis(
 
                     print(f"Output {outfile}")
             else:
-                plot_freq(structure_freq)
+                plot_muiltiple(structure_freq)
 
 
 if __name__ == "__main__":
