@@ -7,27 +7,17 @@ from ssparser.scorer import generate_raw_pdb_score
 from ssparser.utils import get_run_pdb, get_all_pdb
 from ssparser.stride import parse_with_stride
 from ssparser.constants import *
+from ssparser.utils import *
 
 import pandas as pd
+import os
 
 import argparse
 from pathlib import Path
 
 """
-Remove all instances of Amyloid-Beta strcutures from the MSA 
-step of AlphaFold so we can oberserve the results in isolation
+Aligns the strcuture of an individual momomer against an aggregate
 """
-
-
-def t_or_f(arg):
-    ua = str(arg).upper()
-    if "TRUE".startswith(ua):
-        return True
-    elif "FALSE".startswith(ua):
-        return False
-    else:
-        raise BaseException(f"Argument {arg} is not a boolean value")
-
 
 parser = argparse.ArgumentParser(
     description="Aligns AF-generated strcuture against the aggregate in PDB"

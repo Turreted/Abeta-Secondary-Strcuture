@@ -3,7 +3,7 @@ import tempfile
 import re
 import os
 
-"""
+des="""
 Generates the structure of a given PDB file using the STRIDE algorithm, which must
 be installed to the user's $PATH. Instructions for installing the STRIDE executable
 can be found at https://webclu.bio.wzw.tum.de/stride/install.html.
@@ -11,6 +11,20 @@ can be found at https://webclu.bio.wzw.tum.de/stride/install.html.
 
 # overwrite with path to your own binary, if necessary
 STRIDE_EXE = "stride"
+
+import argparse
+from pathlib import Path
+
+parser = argparse.ArgumentParser(
+    description=des
+)
+parser.add_argument(
+    "-i",
+    "--input",
+    help="Input Directory (must be the output of a AlphaFold run or contain PDB files)",
+    required=True,
+)
+parser.add_argument("-o", "--output", help="Output Directory", required=True)
 
 
 def parse_with_stride(infile: str, outfile: str):
@@ -48,11 +62,13 @@ def parse_with_stride(infile: str, outfile: str):
         for line in csv_contents:
             f.write(f"{line}\n")
 
+args = parser.parse_args()
 
-in_dir = "abeta-ent"
-out_dir = "abeta-csv"
+if __name__ == "__main__":
+    Path(args.output).mkdir(parents=True, exist_ok=True)
 
-for fname in os.listdir(in_dir):
-    infile = os.path.join(in_dir, fname)
-    outfile = os.path.join(out_dir, fname.replace(".ent", ".csv"))
-    parse_with_stride(infile, outfile)
+    # iterate through all structure files and output them
+    for fname in [f for f in os.listdir(args.input) if (".ent" in f or ".pdb" in f)]:
+        infile = os.path.join(args.input, fname)
+        outfile = os.path.join(args.output, fname.replace(".ent", ".csv").replace("pdb", ".csv"))
+        parse_with_stride(infile, outfile)
