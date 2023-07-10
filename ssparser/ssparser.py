@@ -27,7 +27,6 @@ def parse_dataset_freq(dataset_dir=DATASET_DIR) -> dict:
     other = np.zeros(ABETA_LONG_RESIDUE_COUNT, dtype=np.double)
 
     for parsed_file in sorted(os.listdir(dataset_dir)):
-        print(parsed_file)
         infile = os.path.join(dataset_dir, parsed_file)
         df = pd.read_csv(infile)
 

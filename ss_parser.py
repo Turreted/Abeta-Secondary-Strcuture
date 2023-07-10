@@ -105,7 +105,6 @@ def run_analysis(
     # input directory is the result of an alphafold run so contains .pkl metadata files
 
     if is_alphafold:
-        print("Extra dumb")
         for pdb in get_run_pdb(input_dir, multimer=multimer, relaxed=relaxed):
             fullpath = os.path.join(input_dir, pdb)
             df = parse_with_stride(fullpath)
