@@ -50,6 +50,11 @@ def get_all_pdb(data_dir: str) -> list:
 def get_all_csv(data_dir: str) -> list:
     return [f for f in os.listdir(data_dir) if f.endswith(".csv")]
 
+# list fullpaths of every file in dir
+def absolute_file_paths(directory):
+    path = os.path.abspath(directory)
+    return [entry.path for entry in os.scandir(path) if entry.is_file()]
+
 def t_or_f(arg):
     ua = str(arg).upper()
     if "TRUE".startswith(ua):

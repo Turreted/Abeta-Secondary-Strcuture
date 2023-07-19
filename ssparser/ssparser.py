@@ -2,15 +2,16 @@ import pandas as pd
 import numpy as np
 import os
 
+from .stride import parse_with_stride
 from .constants import *
 
-def parse_dataset_freq(dataset_dir=DATASET_DIR) -> dict:
+def parse_ss_freq(struct_files: list[str], filetype="csv") -> dict:
     """
-    parse_dataset_freq: takes a directory of parsed .pdb/.ent files as .csv files
+    parse_ss_freq: takes a directory of parsed .pdb/.ent files as .csv files
     and returns the frequency of each secondary strcuture in the abeta-chain
 
     input:
-        dataset_dir: path to a dataset that should contain only parsed .csv files
+        struct_files: full paths
     
     output:
         A dictionary containing an array of the normalized number of that secondary
@@ -18,17 +19,19 @@ def parse_dataset_freq(dataset_dir=DATASET_DIR) -> dict:
         in the form {"Alpha": alpha, "Beta": beta, "Turn": turn, "Other": other}
     """
 
+    if filetype not in ["csv", "ent", "pdb"]:
+        raise BaseException("parse_ss_freq: filetype must be one of csv ent psb")
+
     total_chain_count = 0
     long_chain_count  = 0
 
-    alpha = np.zeros(ABETA_LONG_RESIDUE_COUNT, dtype=np.double)
-    beta  = np.zeros(ABETA_LONG_RESIDUE_COUNT, dtype=np.double)
-    turn  = np.zeros(ABETA_LONG_RESIDUE_COUNT, dtype=np.double)
-    other = np.zeros(ABETA_LONG_RESIDUE_COUNT, dtype=np.double)
+    alpha = np.zeros(ABETA_LONG_RESIDUE_COUNT, dtype=np.float32)
+    beta  = np.zeros(ABETA_LONG_RESIDUE_COUNT, dtype=np.float32)
+    turn  = np.zeros(ABETA_LONG_RESIDUE_COUNT, dtype=np.float32)
+    other = np.zeros(ABETA_LONG_RESIDUE_COUNT, dtype=np.float32)
 
-    for parsed_file in sorted(os.listdir(dataset_dir)):
-        infile = os.path.join(dataset_dir, parsed_file)
-        df = pd.read_csv(infile)
+    for infile in struct_files:
+        df = pd.read_csv(infile) if filetype == "csv" else parse_with_stride(infile)
 
         # iterate though each chain in the complex
         chain_names = set(df["Chain"])
@@ -39,7 +42,6 @@ def parse_dataset_freq(dataset_dir=DATASET_DIR) -> dict:
             # a substring of the total chain. Sequence the strcuture if it is.
             aa_sequence = list(chain["Residue Name"])
             if "".join(aa_sequence) in ABETA_LONG_STRING:
-                #print(f"Sequencing {parsed_file} Chain {cname}")
                 
                 chain_start = int(min(chain["PDB ResID"]))
                 chain_stop  = int(max(chain["PDB ResID"]))
@@ -82,16 +84,12 @@ def parse_dataset_freq(dataset_dir=DATASET_DIR) -> dict:
                     other[res_index] += 1
 
     # normalize by dividing the quantity at each residue by the total number of chains
-    for i in range(ABETA_SHORT_RESIDUE_COUNT):
-        alpha[i] /= total_chain_count
-        beta[i]  /= total_chain_count
-        turn[i]  /= total_chain_count
-        other[i] /= total_chain_count
+    normalizer = np.repeat(total_chain_count, ABETA_LONG_RESIDUE_COUNT)
+    normalizer[-1] = long_chain_count if long_chain_count != 0 else 1
+    normalizer[-2] = long_chain_count if long_chain_count != 0 else 1
 
-    for i in range(ABETA_SHORT_RESIDUE_COUNT, ABETA_LONG_RESIDUE_COUNT):
-        alpha[i] /= long_chain_count
-        beta[i]  /= long_chain_count
-        turn[i]  /= long_chain_count
-        other[i] /= long_chain_count
+    freq_dict = {"Alpha": alpha, "Beta": beta, "Turn": turn, "Other": other}
+    for k, v in freq_dict.items():
+        freq_dict[k] = np.divide(v, normalizer)
 
-    return {"Alpha": alpha, "Beta": beta, "Turn": turn, "Other": other}
+    return freq_dict

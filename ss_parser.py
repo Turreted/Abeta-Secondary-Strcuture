@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-from ssparser.plotter import plot_monomer_hits, plot_muiltiple
-from ssparser.ssparser import parse_dataset_freq
+from ssparser.plotter import plot_monomer_hits, plot_muiltiple, plot_complex_hits
+from ssparser.ssparser import parse_ss_freq
 from ssparser.scorer import generate_score_table
 from ssparser.scorer import generate_raw_pdb_score
 from ssparser.utils import get_run_pdb, get_all_pdb
@@ -11,6 +11,7 @@ from ssparser.utils import *
 
 import pandas as pd
 import os
+import glob
 
 import argparse
 from pathlib import Path
@@ -28,7 +29,7 @@ parser.add_argument(
     help="Input Directory (must be the output of a AlphaFold run or contain PDB files)",
     required=True,
 )
-parser.add_argument("-o", "--output", help="Output Directory", required=True)
+parser.add_argument("-o", "--output", help="Output Directory")
 parser.add_argument(
     "--alphafold",
     "-a",
@@ -57,7 +58,6 @@ parser.add_argument(
     type=t_or_f,
     help="Specifies whether to plot a graph of the frequency of secondary strcutures at each position, or to plot the regular graph (of monomer against aggregate)",
 )
-
 parser.add_argument(
     "--output_csv",
     "-c",
@@ -77,7 +77,6 @@ def extract_monomer_ss(chain: pd.DataFrame) -> list:
 
     return ss
 
-
 def run_analysis(
     input_dir: str,
     output_dir: str,
@@ -87,68 +86,45 @@ def run_analysis(
     plot_freq=False,
     csv=False,
 ):
-    if not plot_freq:
-        Path(output_dir).mkdir(parents=True, exist_ok=True)
-
-    if csv:
-        print("Generating scoring table...")
-
-        if is_alphafold:
-            generate_score_table(input_dir, output_dir)
-        else:
-            generate_raw_pdb_score(input_dir, output_dir)
+    if not output_dir: output_dir = os.path.join("./output", input_dir)
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
 
     print("Generating frequency table from fibril structures...")
-    structure_freq = parse_dataset_freq(dataset_dir=DATASET_DIR)
+    template_dict = parse_ss_freq(struct_files=absolute_file_paths(DATASET_DIR))
 
     print("Generating monomer secondary strcuture charts...")
-    # input directory is the result of an alphafold run so contains .pkl metadata files
+    pdb_list = [os.path.join(input_dir, f) for f in (
+        get_run_pdb(input_dir, multimer=multimer, relaxed=relaxed)
+        if is_alphafold
+        else get_all_pdb(input_dir)
+    )]
 
-    if is_alphafold:
-        for pdb in get_run_pdb(input_dir, multimer=multimer, relaxed=relaxed):
-            fullpath = os.path.join(input_dir, pdb)
-            df = parse_with_stride(fullpath)
-
-            # output for each chain in complex, pad with coils
-            if multimer:
-                for chain_iter, chain_code in enumerate(set(df["Chain"])):
-                    chain = df.loc[df["Chain"] == chain_code]
-                    ss = extract_monomer_ss(chain)
-
-                    outfile = f"{os.path.join(output_dir, pdb.strip('.pdb'))}-chain-{chain_iter}.png"
-                    plot_monomer_hits(ss, structure_freq, output_file=outfile)
-                    chain_iter += 1
-
-                    print(f"Output {outfile}")
-
-            # output for single chain in monomer
-            else:
-                ss = extract_monomer_ss(df)
-
-                outfile = os.path.join(output_dir, pdb.replace("pdb", "png"))
-                plot_monomer_hits(ss, structure_freq, output_file=outfile)
-                print(f"Output {outfile}")
-
-    # input directory is not the result of an alphafold run and so does not
-    # contain .pkl metadata files
+    # plot frequency dictionary
+    if plot_freq:
+        # plot ss frequency of individual cimplex
+        for pdb in pdb_list:
+            d = parse_ss_freq(struct_files=[pdb], filetype="pdb")
+            outfile = os.path.join(output_dir, os.path.basename(pdb).replace(".pdb", ".png"))
+            print(f"Generating {outfile}...")
+            plot_muiltiple(d, output_file=outfile)
+    
+    # plot individual complexes
     else:
-        for pdb in get_all_csv(input_dir):
-            fullpath = os.path.join(input_dir, pdb)
-            df = pd.read_csv(fullpath)
+        for pdb in pdb_list:
+            df = parse_with_stride(pdb)
 
-            if not plot_freq:
-                for chain_iter, chain_code in enumerate(set(df["Chain"])):
-                    chain = df.loc[df["Chain"] == chain_code]
-                    ss = extract_monomer_ss(chain)
+            chain_ss_list = []
 
-                    outfile = f"{os.path.join(output_dir, pdb.strip('.pdb'))}-chain-{chain_iter}.png"
-                    plot_monomer_hits(ss, structure_freq, output_file=outfile)
+            for chain_code in set(df["Chain"]):
+                chain = df.loc[df["Chain"] == chain_code]
+                ss = extract_monomer_ss(chain)
+                chain_ss_list.append(ss)
 
-                    print(f"Output {outfile}")
-            else:
-                print("Plotting structure_freq")
-                plot_muiltiple(structure_freq)
-                break
+            print(chain_ss_list)
+            outfile = os.path.join(output_dir, os.path.basename(pdb).replace(".pdb", ".png"))
+            print(f"Generating {outfile}...")
+            plot_complex_hits(chain_ss_list, template_dict, output_file=outfile)
+
 
 if __name__ == "__main__":
     run_analysis(

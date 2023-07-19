@@ -4,7 +4,7 @@ import os
 import pickle
 
 from .stride import parse_with_stride
-from .ssparser import parse_dataset_freq
+from .ssparser import parse_ss_freq
 from .constants import *
 from .utils import get_full_runs
 from .utils import get_all_pdb
@@ -38,7 +38,8 @@ def generate_score_table(
     multimer=False,
     relaxed=True,
 ):
-    template_dict = parse_dataset_freq()
+
+    template_dict = parse_ss_freq(os.listdir(DATASET_DIR))
     beta_template = template_dict["Beta"]
     turn_template = template_dict["Turn"]
 
@@ -154,7 +155,7 @@ def generate_raw_pdb_score(
     beta_threshold=0.3,
     turn_threshold=0.2,
 ):
-    template_dict = parse_dataset_freq()
+    template_dict = parse_ss_freq(os.listdir(DATASET_DIR))
     beta_template = template_dict["Beta"]
     turn_template = template_dict["Turn"]
 
