@@ -1,6 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
-from matplotlib.pyplot import figure
+from matplotlib.cm import ScalarMappable
 import pandas as pd
 import os
 
@@ -49,16 +49,7 @@ def plot_complex_hits(ss_sequence_list, template_dict, output_file=None):
     chain_count = len(ss_sequence_list)
 
     x = np.arange(ABETA_LONG_RESIDUE_COUNT, dtype=int)
-
     fig, ax = plt.subplots(2, layout='constrained')
-    ax[0].set_xticks(x, ABETA_LONG_SEQUENCE, rotation=-45, fontsize = 6)
-    ax[1].set_xticks(x, ABETA_LONG_SEQUENCE, rotation=-45, fontsize = 6)
-
-    #plt.figure(figsize=(10, 5))
-    plt.ylim(0.0, 1.0)
-
-    beta_data = template_dict["Beta"]
-    turn_data = template_dict["Turn"]
     
     width = 0.7
     offset = 0
@@ -71,24 +62,37 @@ def plot_complex_hits(ss_sequence_list, template_dict, output_file=None):
             beta_color_strength[i] += (1 / chain_count) if ss_sequence[i] in ["B", "b", "E"] else 0
             turn_color_strength[i] += (1 / chain_count) if ss_sequence[i] in ["T"] else 0
 
-    for i, measurement in enumerate(beta_data):
-        ax[0].bar(offset, measurement, width, color=beta_color, alpha=beta_color_strength[i], )
-        offset += 1
-    
-    offset = 0
-    for i, measurement in enumerate(turn_data):
-        ax[1].bar(offset, measurement, width, color=turn_color, alpha=turn_color_strength[i])
-        offset += 1
+    data_x = x
+    fig, ax = plt.subplots(2, layout='constrained')
 
-    ax[0].set_ylabel("Frequency of Beta Strand SS")
-    ax[1].set_ylabel("Frequency of Turn SS")
+    b_cmap = plt.cm._colormaps['GnBu'] # GnBu
+    t_cmap = plt.cm._colormaps['GnBu']
+    b_colors = b_cmap(beta_color_strength)
+    t_colors = t_cmap(turn_color_strength)
+
+    ax[0].bar(data_x, template_dict["Beta"], color=b_colors)
+    ax[1].bar(data_x, template_dict["Turn"], color=t_colors)
+
+    sm = ScalarMappable(cmap=b_cmap, norm=plt.Normalize(0,1))
+    sm.set_array([])
+
+    cbar = plt.colorbar(sm, ax=ax)
+    cbar.set_label('Freq of SS in AlphaFold Complex', rotation=270,labelpad=25)
+
+    ax[0].set_ylim([0.0, 1.05])
+    ax[1].set_ylim([0.0, 1.05])
+
+    ax[0].set_ylabel("Freq of Beta SS in PDB")
+    ax[1].set_ylabel("Freq of Turn SS in PDB")
     ax[1].set_xlabel("Residue")
     ax[0].set_title("Frequency of Secondary Structure per Residue of ABeta-Monomer")
 
     if output_file:
-        plt.savefig(output_file, dpi=200)
+        plt.savefig(output_file, dpi=400)
+        plt.close()
     else:
         plt.show()
+
     plt.close()
     
 
@@ -104,6 +108,8 @@ def plot_monomer_hits(ss_sequence: list, template_dict: dict, output_file=None):
     fig, ax = plt.subplots(2, layout='constrained')
     ax[0].set_xticks(x, ABETA_LONG_SEQUENCE, rotation=-45, fontsize = 6)
     ax[1].set_xticks(x, ABETA_LONG_SEQUENCE, rotation=-45, fontsize = 6)
+    ax[0].set_ylim([0.0, 1.05])
+    ax[1].set_ylim([0.0, 1.05])
 
     #plt.figure(figsize=(10, 5))
     plt.ylim(0.0, 1.0)
@@ -115,25 +121,25 @@ def plot_monomer_hits(ss_sequence: list, template_dict: dict, output_file=None):
     offset = 0
 
     for i, measurement in enumerate(beta_data):
-        alpha = 1 if ss_sequence[i] in ["B", "b", "E"] else 0.2
+        alpha = 1 
         ax[0].bar(offset, measurement, width, color=beta_color, alpha=alpha)
         offset += 1
     
     offset = 0
     for i, measurement in enumerate(turn_data):
-        alpha = 1 if ss_sequence[i] in ["T"] else 0.2
+        alpha = 1 
         ax[1].bar(offset, measurement, width, color=turn_color, alpha=alpha)
         offset += 1
 
-    ax[0].set_ylabel("Frequency of Beta Strand SS")
-    ax[1].set_ylabel("Frequency of Turn SS")
-    
+    ax[0].set_ylabel("Frequency of Beta SS in RCSB")
+    ax[1].set_ylabel("Frequency of Turn SS  in RCSB")
     ax[1].set_xlabel("Residue")
-
     ax[0].set_title("Frequency of Secondary Structure per Residue of ABeta-Monomer")
 
+
     if output_file:
-        plt.savefig(output_file, dpi=200)
+        plt.savefig(output_file, dpi=400)
+        plt.close()
     else:
         plt.show()
     plt.close()

@@ -120,7 +120,6 @@ def run_analysis(
                 ss = extract_monomer_ss(chain)
                 chain_ss_list.append(ss)
 
-            print(chain_ss_list)
             outfile = os.path.join(output_dir, os.path.basename(pdb).replace(".pdb", ".png"))
             print(f"Generating {outfile}...")
             plot_complex_hits(chain_ss_list, template_dict, output_file=outfile)
